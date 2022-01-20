@@ -55,12 +55,13 @@ public class QuerryDragon extends MyConnexion {
 		"Erreur d'insertion dragon: " + e.getMessage()
 		);
 		}
+		System.out.println("Well done!");
 		return flag;
 		}
 		
 		
 		/**
-		* Action de lire les tous les ingr�dients
+		* Action to show off your own database
 		*/	
 		public static boolean readAll() {
 			boolean flag = false;
@@ -89,8 +90,62 @@ public class QuerryDragon extends MyConnexion {
 				"Erreur d'affichage d'ing: " + e.getMessage()
 				);
 				}
+			System.out.println("Well done!");
 			return flag;
 		}
+		
+		/**
+		* Action to show off the name of all dragons in your database
+		*/	
+		public static boolean readName() {
+			boolean flag = false;
+			try {	
+				Statement declaration = accessDataBase.createStatement();
+				//SQL query
+				String query = "SELECT id,dragon FROM dragons;";
+				ResultSet resultat = declaration.executeQuery(query);
+				/*
+				* Data recovery
+				*/
+				while (resultat.next()) {
+					dragons ing = new dragons();
+					ing.setId(resultat.getInt("id"));
+					ing.setNomDragon(resultat.getString("dragon"));
+					
+					System.out.println(Integer.toString(ing.getId())+ " - " + ing.getNomDragon().toString());
+					}
+				} catch (Exception e) {
+				System.err.println(
+				"Erreur d'affichage d'ing: " + e.getMessage()
+				);
+				}
+			return flag;
+		}
+		public static boolean deleteDragon() {
+			boolean success = false;
+			try {
+			System.out.println("You need to delete a dragon? ok! what's its name?");	
+			readName();
+			System.out.println("Give me a number which you choose, please.");	
+			int idDragon = Clavier.lireInt();
+			
+			// SQL query to delete a dragon by id ( which was seleted by user)
+			String query = "DELETE FROM dragons WHERE id = ?";
+			PreparedStatement declaration = accessDataBase.prepareStatement(query);
+			
+			// idDragon will be replaced into "?" in the query SQL
+			declaration.setInt(1, idDragon);
+
+			int executeUpdate = declaration.executeUpdate();
+			success = (executeUpdate == 1);
+			} catch (SQLException e) {
+			System.err.println("Erreur suppression dragon: "
+			+ e.getMessage());
+			}
+			System.out.println("Well done!");
+			return success;
+			}
+		
 		/**
 		* Ici on test
 		* @param args the command line arguments
@@ -109,8 +164,10 @@ public class QuerryDragon extends MyConnexion {
 			
 //			//Update
 //			update();
-			// final
-			readAll();
+//			// final
+//			readAll();
+//			readName();
+			deleteDragon();
 			closeConnection();
 	}
 }
