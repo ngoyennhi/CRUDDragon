@@ -44,6 +44,9 @@ public class MainCRUDDragon {
 			case 5:
 				doSomething = 0;
 				break;
+				default:
+					System.out.println("oh non, your number is not our option, pls try another!");
+				break;
 			}
 		}
 		MyConnexion.closeConnection();
