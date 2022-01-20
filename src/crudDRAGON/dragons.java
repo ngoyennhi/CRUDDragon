@@ -2,58 +2,63 @@ package crudDRAGON;
 
 public class dragons {
 private int id;
-private String dragon;
-private String sexe;
-private int longueur;
-private int nombreEcailles;
-private String cracheDuFeu;
-private String comportementAmoureux;
-@Override
-public String toString() {
-	return "dragons [id=" + id + ", longueur=" + longueur + ", nombreEcailles=" + nombreEcailles + "]";
-}
+private String nomDragon; 
+private String sexeDragon; 
+private int longDragon;
+private int scalesDragon;
+private String spitFireDragon;
+private String behaviorDragon;
+
 public int getId() {
 	return id;
 }
 public void setId(int id) {
 	this.id = id;
 }
-public String getDragon() {
-	return dragon;
+public String getNomDragon() {
+	return nomDragon;
 }
-public void setDragon(String dragon) {
-	this.dragon = dragon;
+public void setNomDragon(String nomDragon) {
+	this.nomDragon = nomDragon;
 }
-public String getSexe() {
-	return sexe;
+public String getSexeDragon() {
+	return sexeDragon;
 }
-public void setSexe(String sexe) {
-	this.sexe = sexe;
+public void setSexeDragon(String sexeDragon) {
+	this.sexeDragon = sexeDragon;
 }
-public int getLongueur() {
-	return longueur;
+public int getLongDragon() {
+	return longDragon;
 }
-public void setLongueur(int longueur) {
-	this.longueur = longueur;
+public void setLongDragon(int longDragon) {
+	this.longDragon = longDragon;
 }
-public int getNombreEcailles() {
-	return nombreEcailles;
+public int getScalesDragon() {
+	return scalesDragon;
 }
-public void setNombreEcailles(int nombreEcailles) {
-	this.nombreEcailles = nombreEcailles;
+public void setScalesDragon(int scalesDragon) {
+	this.scalesDragon = scalesDragon;
 }
-public String getCracheDuFeu() {
-	return cracheDuFeu;
+public String getSpitFireDragon() {
+	return spitFireDragon;
 }
-public void setCracheDuFeu(String cracheDuFeu) {
-	this.cracheDuFeu = cracheDuFeu;
+public void setSpitFireDragon(String spitFireDragon) {
+	this.spitFireDragon = spitFireDragon;
 }
-public String getComportementAmoureux() {
-	return comportementAmoureux;
+public String getBehaviorDragon() {
+	return behaviorDragon;
 }
-public void setComportementAmoureux(String comportementAmoureux) {
-	this.comportementAmoureux = comportementAmoureux;
+public void setBehaviorDragon(String behaviorDragon) {
+	this.behaviorDragon = behaviorDragon;
 }
+// used to public result
+@Override
+public String toString() {
+	return "dragons [id=" + id + ", nomDragon=" + nomDragon + ", sexeDragon=" + sexeDragon + ", longDragon="
+			+ longDragon + ", scalesDragon=" + scalesDragon + ", spitFireDragon=" + spitFireDragon + ", behaviorDragon="
+			+ behaviorDragon + "]";
+}
+
 
 
 }
