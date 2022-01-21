@@ -30,7 +30,7 @@ public class MyConnexion {
 	public static void openConnection() {
 		/* Parametres de connexion */
 		// pour Window
-//	String url = "jdbc:mysql://127.0.0.1/crudDRAGON";
+       //	String url = "jdbc:mysql://127.0.0.1/crudDRAGON";
 		// pour Mac
 		String url = "jdbc:mysql://localhost:8889/crudDRAGON";
 		// crudDRAGON = nom de ma bdd

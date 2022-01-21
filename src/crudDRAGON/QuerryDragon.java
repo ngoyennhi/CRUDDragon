@@ -146,137 +146,103 @@ public class QuerryDragon extends MyConnexion {
 	 */
 	public static boolean updateDragon() {
 		boolean flag = false;
+ 		try {		
 		// saisir la valeur
 		System.out.println("Give me the dragon's id which you want to update, pls");
 		int idUpdate = Clavier.lireInt();
 		System.out.println("which detail do you want to modify? Choose one of list, pls");
 		System.out.println("1-Name; 2-Gendre; 3-Long; 4-scales; 5-spitFire; 6-behavior");
-		int detailUpdate = Clavier.lireInt();
-		switch (detailUpdate) {
-		// Modify name
-		case 1:
-			try {
-				// query SQL
-				String query = "UPDATE dragons SET dragon = ? WHERE id = ? ";
-				PreparedStatement declaration = accessDataBase.prepareStatement(query);
-				System.out.println("what's dragon's new name?");
-				String nameUpdate = Clavier.lireString();
-				// Prepare the infos to insert into the query SQL
-				declaration.setString(1, nameUpdate);
-				declaration.setInt(2, idUpdate);
+		int detailUpdate = Clavier.lireInt();		
+		// Prepare the infos to insert into the query SQL
+		if(detailUpdate == 1) {
+			// query SQL
+			String query = "UPDATE dragons SET dragon = ? WHERE id = ? ";
+			PreparedStatement declaration = accessDataBase.prepareStatement(query);
+			System.out.println("what's dragon's new name?");
+			String nameUpdate = Clavier.lireString();
+			// Prepare the infos to insert into the query SQL
+			declaration.setString(1, nameUpdate);
+			declaration.setInt(2, idUpdate);
+			int executeUpdate = declaration.executeUpdate();
+			flag = (executeUpdate == 1);
+		} 
+		else if(detailUpdate == 2) {
+			// Modify gendre
+		String query = "UPDATE dragons SET sexe = ? WHERE id = ? ";
+		PreparedStatement declaration = accessDataBase.prepareStatement(query);
+		System.out.println("what's dragon's new gender?");
+		String genderUpdate = Clavier.lireString();
+		// Prepare the infos to insert into the query SQL
+		declaration.setString(1, genderUpdate);
+		declaration.setInt(2, idUpdate);
+		int executeUpdate = declaration.executeUpdate();
+		flag = (executeUpdate == 1);
+		} 
+		else if(detailUpdate == 3) {
+		// query SQL
+		String query = "UPDATE dragons SET longueur = ? WHERE id = ? ";
+		PreparedStatement declaration = accessDataBase.prepareStatement(query);
+		System.out.println("How many centimeters?");
+		int longUpdate = Clavier.lireInt();
+		// Prepare the infos to insert into the query SQL
+		declaration.setInt(1, longUpdate);
+		declaration.setInt(2, idUpdate);
 
-				int executeUpdate = declaration.executeUpdate();
-				flag = (executeUpdate == 1);
-			} catch (Exception e) {
-				System.err.println("Error of updateDragon(): " + e.getMessage());
-			}
-			break;
-
-		// Modify gendre
-		case 2:
-			try {
-				// query SQL
-				String query = "UPDATE dragons SET sexe = ? WHERE id = ? ";
-				PreparedStatement declaration = accessDataBase.prepareStatement(query);
-				System.out.println("what's dragon's new gender?");
-				String genderUpdate = Clavier.lireString();
-				// Prepare the infos to insert into the query SQL
-				declaration.setString(1, genderUpdate);
-				declaration.setInt(2, idUpdate);
-
-				int executeUpdate = declaration.executeUpdate();
-				flag = (executeUpdate == 1);
-			} catch (Exception e) {
-				System.err.println("Error of updateDragon(): " + e.getMessage());
-			}
-			break;
-		// Modify long
-		case 3:
-			try {
-				// query SQL
-				String query = "UPDATE dragons SET longueur = ? WHERE id = ? ";
-				PreparedStatement declaration = accessDataBase.prepareStatement(query);
-				System.out.println("How many centimeters?");
-				int longUpdate = Clavier.lireInt();
-				// Prepare the infos to insert into the query SQL
-				declaration.setInt(1, longUpdate);
-				declaration.setInt(2, idUpdate);
-
-				int executeUpdate = declaration.executeUpdate();
-				flag = (executeUpdate == 1);
-			} catch (Exception e) {
-				System.err.println("Error of updateDragon(): " + e.getMessage());
-			}
-			break;
-		
-		// Modify scales
-		case 4:
-			try {
-				// query SQL
-				String query = "UPDATE dragons SET nombreEcailles = ? WHERE id = ? ";
-				PreparedStatement declaration = accessDataBase.prepareStatement(query);
-				System.out.println("How many scales does your dragons have?");
-				int scalesUpdate = Clavier.lireInt();
-				// Prepare the infos to insert into the query SQL
-				declaration.setInt(1, scalesUpdate);
-				declaration.setInt(2, idUpdate);
-
-				int executeUpdate = declaration.executeUpdate();
-				flag = (executeUpdate == 1);
-			} catch (Exception e) {
-				System.err.println("Error of updateDragon(): " + e.getMessage());
-			}
-			break;
-			
-		// Modify spitFire
-		case 5:
-
-			try {
-				// query SQL
-				String query = "UPDATE dragons SET cracheDuFeu = ? WHERE id = ? ";
-				PreparedStatement declaration = accessDataBase.prepareStatement(query);
-				System.out.println("Can he/she spit fire? oui-Yes  non-NO");
-				String spitFireUpdate = Clavier.lireString();
-				// Prepare the infos to insert into the query SQL
-				declaration.setString(1, spitFireUpdate);
-				declaration.setInt(2, idUpdate);
-
-				int executeUpdate = declaration.executeUpdate();
-				flag = (executeUpdate == 1);
-			} catch (Exception e) {
-				System.err.println("Error of updateDragon(): " + e.getMessage());
-			}
-			break;
-		// Modify behavior
-		case 6:
-
-			try {
-				// query SQL
-				String query = "UPDATE dragons SET comportementAmoureux = ? WHERE id = ? ";
-				// preparer statement for un querry
-				PreparedStatement declaration = accessDataBase.prepareStatement(query);
-				// ajouter ingredient sur la position "?"
-				System.out.println("What's the new behavior of your dragon?");
-				String behavior = Clavier.lireString();
-				// Prepare the infos to insert into the query SQL
-				declaration.setString(1, behavior);
-				declaration.setInt(2, idUpdate);
-
-				int executeUpdate = declaration.executeUpdate();
-				flag = (executeUpdate == 1);
-			} catch (Exception e) {
-				System.err.println("Error of updateDragon(): " + e.getMessage());
-			}
-			
-			break;
-		default:
-			System.out.println("select an action, pls");
-			break;
+		int executeUpdate = declaration.executeUpdate();
+		flag = (executeUpdate == 1);
 		}
+		else if(detailUpdate == 4) {
+		// query SQL
+		String query = "UPDATE dragons SET nombreEcailles = ? WHERE id = ? ";
+		PreparedStatement declaration = accessDataBase.prepareStatement(query);
+		System.out.println("How many scales does your dragons have?");
+		int scalesUpdate = Clavier.lireInt();
+		// Prepare the infos to insert into the query SQL
+		declaration.setInt(1, scalesUpdate);
+		declaration.setInt(2, idUpdate);
+
+		int executeUpdate = declaration.executeUpdate();
+		flag = (executeUpdate == 1);
+
+		} 
+		else if(detailUpdate == 5) {
+		// query SQL
+		String query = "UPDATE dragons SET cracheDuFeu = ? WHERE id = ? ";
+		PreparedStatement declaration = accessDataBase.prepareStatement(query);
+		System.out.println("Can he/she spit fire? oui-Yes  non-NO");
+		String spitFireUpdate = Clavier.lireString();
+		// Prepare the infos to insert into the query SQL
+		declaration.setString(1, spitFireUpdate);
+		declaration.setInt(2, idUpdate);
+
+		int executeUpdate = declaration.executeUpdate();
+		flag = (executeUpdate == 1);
+		} 
+		else if(detailUpdate == 6) {
+		// query SQL
+		String query = "UPDATE dragons SET comportementAmoureux = ? WHERE id = ? ";
+		// preparer statement for un querry
+		PreparedStatement declaration = accessDataBase.prepareStatement(query);
+		// ajouter ingredient sur la position "?"
+		System.out.println("What's the new behavior of your dragon?");
+		String behavior = Clavier.lireString();
+		// Prepare the infos to insert into the query SQL
+		declaration.setString(1, behavior);
+		declaration.setInt(2, idUpdate);
+
+		int executeUpdate = declaration.executeUpdate();
+		flag = (executeUpdate == 1);
+		} 
+		else {
+			System.out.println("select an action, pls");
+			return flag = false;
+		}
+	} catch (Exception e) {
+		System.err.println("Error of updateDragon(): " + e.getMessage());
+	}
 		System.out.println("Well done!");
 		return flag;
 	}
-
 	/**
 	 * Ici on test
 	 * 
