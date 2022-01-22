@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 public class MyConnexion {
 	static Connection accessDataBase = null;
-
 	/**
 	 * Testons la connexion
 	 * 
@@ -21,7 +20,6 @@ public class MyConnexion {
 		// fermer pour de petite requete
 		closeConnection();
 	}
-
 	/**
 	 * Connexion � ma base de donn�e crudDRAGON Ouverture de la connexion
 	 * 
@@ -35,10 +33,8 @@ public class MyConnexion {
 		String url = "jdbc:mysql://localhost:8889/crudDRAGON";
 		// crudDRAGON = nom de ma bdd
 		String utilisateur = "root";
-
 //	// pour Windows
 //	String motDePasse = "";
-
 		// pour Mac
 		String motDePasse = "root";
 		try {
@@ -49,7 +45,6 @@ public class MyConnexion {
 			Logger.getLogger(MyConnexion.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-
 	/**
 	 * True si la connexion est OK Tester la connexion
 	 * 
