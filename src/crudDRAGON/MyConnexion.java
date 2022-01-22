@@ -2,6 +2,7 @@ package crudDRAGON;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,10 +26,18 @@ public class MyConnexion {
 	 */
 	public static void openConnection() {
 		/* Connection parameters*/
-		String url = "jdbc:mysql://localhost:8889/crudDRAGON";
+        //for window
+		String url = "jdbc:mysql://127.0.0.1/crudDRAGON";
 		// crudDRAGON = name of database
 		String utilisateur = "root";
-		String motDePasse = "root";
+		String motDePasse = "";
+		
+//        //for Mac
+//		String url = "jdbc:mysql://localhost:8889/crudDRAGON";
+//		// crudDRAGON = name of database
+//		String utilisateur = "root";
+//		String motDePasse = "root";
+		
 		try {
 			System.out.println("try to connect");
 			// we add our parameters 
