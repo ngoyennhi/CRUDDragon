@@ -9,44 +9,36 @@ import java.sql.SQLException;
 public class MyConnexion {
 	static Connection accessDataBase = null;
 	/**
-	 * Testons la connexion
+	 * Let's test the connection
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		openConnection();
 		testConnection();
-		// La fermeture doit �tre fait � la fin du script principal. Evitez d'ouvrir et
-		// fermer pour de petite requete
 		closeConnection();
 	}
 	/**
-	 * Connexion � ma base de donn�e crudDRAGON Ouverture de la connexion
+	 * Connection to my crudDRAGON database Opening the connection
 	 * 
 	 * @throws SQLException
 	 */
 	public static void openConnection() {
-		/* Parametres de connexion */
-		// pour Window
-       //	String url = "jdbc:mysql://127.0.0.1/crudDRAGON";
-		// pour Mac
+		/* Connection parameters*/
 		String url = "jdbc:mysql://localhost:8889/crudDRAGON";
-		// crudDRAGON = nom de ma bdd
+		// crudDRAGON = name of database
 		String utilisateur = "root";
-//	// pour Windows
-//	String motDePasse = "";
-		// pour Mac
 		String motDePasse = "root";
 		try {
 			System.out.println("try to connect");
-			// on ajoute nos param�tres
+			// we add our parameters 
 			accessDataBase = DriverManager.getConnection(url, utilisateur, motDePasse);
 		} catch (SQLException ex) {
 			Logger.getLogger(MyConnexion.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 	/**
-	 * True si la connexion est OK Tester la connexion
+	 * True if the connection is OK 
 	 * 
 	 * @return
 	 */
